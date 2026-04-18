@@ -1,161 +1,188 @@
 <!DOCTYPE html>
 <html lang="cs">
-<<head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ing. Jan Hák | IceExplorer</title>
-    
-    <meta name="description" content="Ing. Jan Hák - IceExplorer. Odborné návrhy a realizace klimatizačních jednotek ve Studenci a okolí.">
-    <meta name="keywords" content="klimatizace Studenec, montáž klimatizací, Jan Hák, IceExplorer, klimatizační jednotky">
-    <meta name="robots" content="index, follow">
-    
+    <title>IceExplorer | Ing. Jan Hák</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: #333; line-height: 1.6; }
-       header { 
-    background: #002d5e; 
-    color: white; 
-    padding: 20px 0;      /* Zmenšeno na 20px nahoru a dolů */
-    text-align: center; 
-}
-
-/* Toto odstraní ty obrovské neviditelné mezery u jména a podnadpisu */
-header h1 {
-    margin: 0 !important;
-    font-size: 2.2rem;    /* Velikost jména */
-}
-
-header p {
-    margin: 5px 0 0 0 !important; /* Jen malá 5px mezera mezi jménem a textem */
-    opacity: 0.9;
-    font-size: 1.1rem;
-}
-        .hero { background: #f4f9ff; padding: 3rem 1rem; text-align: center; }
-        .bear-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .container { max-width: 900px; margin: auto; padding: 2rem; }
-        h2 { border-bottom: 2px solid #002d5e; padding-bottom: 0.5rem; color: #002d5e; margin-top: 2.5rem; }
-        
-        /* Realizace */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 1.5rem; }
-        .project-card { background: #fff; border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; transition: transform 0.2s; }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        
-        /* Sekce Partneři */
-        .partners-grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: space-around; 
-            align-items: center; 
-            gap: 40px; 
-            margin-top: 2rem;
-            padding: 20px;
-        }
-        .partner-logo { 
-            max-width: 140px; 
-            max-height: 60px;
-            filter: grayscale(100%); 
-            opacity: 0.6; 
-            transition: 0.4s ease; 
-        }
-        .partner-logo:hover { 
-            filter: grayscale(0%); 
-            opacity: 1; 
-            transform: scale(1.1); 
+        :root {
+            --primary: #45a28e; 
+            --dark: #1a1a1a;
+            --accent: #002d5e;
         }
 
-     .contact { 
-    background: #002d5e; 
-    color: white; 
-    padding: 15px 0;      /* Ještě méně - jen 15px nahoru a dolů */
-    text-align: center; 
-    margin-top: 2rem;
-}
-
-/* Toto odstraní veškeré mezery nad prvním textem v kontaktu */
-.contact p:first-child, 
-.contact h2:first-child {
-    margin-top: 0 !important;
-}
-
-.contact p {
-    margin-bottom: 5px;
-    font-size: 1rem;
-}
-
-.contact a { 
-    color: #add8e6; 
-    text-decoration: none; 
-    font-weight: bold; 
-    font-size: 1.4rem; 
-    display: block; 
-    margin: 2px 0;       /* Minimální mezery mezi řádky */
-}
-
-.address { 
-    font-style: normal; 
-    display: block; 
-    opacity: 0.8; 
-    font-size: 0.95rem;
-    margin-top: 0;
-}
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: var(--dark); line-height: 1.6; }
         
-        footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; color: #777; border-top: 1px solid #eee; }
+        /* Jazyková lišta */
+        .top-bar { background: var(--dark); color: white; padding: 10px 0; text-align: center; }
+        .lang-btn { 
+            cursor: pointer; 
+            margin: 0 10px; 
+            opacity: 0.7; 
+            transition: 0.3s; 
+            background: none; 
+            border: none; 
+            color: white; 
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .lang-btn:hover, .lang-btn.active { opacity: 1; color: var(--primary); }
+
+        header { padding: 20px; text-align: center; }
+        .logo { max-width: 400px; width: 90%; }
+
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1599933310631-ec6e093554e2?q=80&w=1200') center/cover;
+            color: white; padding: 40px 20px; text-align: center;
+        }
+
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { 
+            background: #f9f9f9; border-radius: 15px; padding: 30px; 
+            text-align: center; border-bottom: 5px solid var(--primary);
+        }
+        .card h3 { color: var(--primary); }
+
+        .dotace { 
+            background: #e8f5e9; border: 2px dashed #4caf50; border-radius: 15px; 
+            padding: 30px; margin: 40px 0; text-align: center; 
+        }
+
+        .contact-section { background: var(--accent); color: white; padding: 40px 20px; text-align: center; }
+        .contact-section a { color: var(--primary); text-decoration: none; font-size: 1.8rem; font-weight: bold; }
+
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #888; }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <button class="lang-btn active" onclick="changeLang('cs')">Česky</button>
+    <button class="lang-btn" onclick="changeLang('de')">Wirsprechen Deutsch</button>
+    <button class="lang-btn" onclick="changeLang('en')">We speak English</button>
+</div>
+
 <header>
-    <h1>Ing. Jan Hák</h1>
-    <p>Montáž a servis chladících zařízení</p>
+    <img src="Logo.png" alt="IceExplorer" class="logo">
 </header>
 
 <section class="hero">
-    <img src="https://images.unsplash.com/photo-1589656966895-2f33e7653819?q=80&w=400&h=400&auto=format&fit=crop" alt="Ice Explorer Bear" class="bear-img">
-    <h2>Vítejte v IceExplorer - Klimatizace na míru</h2>
-    <p>Preciznost, chladná hlava a pevná řešení pro vaše projekty.</p>
+    <h1 id="hero-title">Chladírenská technika a moderní zdroje vytápění</h1>
+    <p id="hero-desc">Odborné návrhy, precizní montáž a spolehlivý servis pro váš domov i podnikání.</p>
 </section>
 
 <div class="container">
-    <section id="realizace">
-        <h2>Moje realizace</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Projekt Alfa</h3>
-                <p>Kompletní inženýrský dozor a technická dokumentace pro průmyslovou halu.</p>
-            </div>
-            <div class="project-card">
-                <h3>Optimalizace Beta</h3>
-                <p>Návrh a implementace úsporných opatření v energetickém provozu.</p>
-            </div>
-            <div class="project-card">
-                <h3>Analýza Gamma</h3>
-                <p>Statické posudky a technické konzultace pro soukromý sektor.</p>
-            </div>
+    <div class="services">
+        <div class="card">
+            <h3 id="service1-title">Klimatizace</h3>
+            <p id="service1-desc">Ideální klima po celý rok. Navrhneme řešení na míru pro byty, domy i komerční prostory.</p>
         </div>
-    </section>
 
-    <section id="partneri">
-        <h2>Naši partneři</h2>
-        <div class="partners-grid">
-            <img src="LG.jpg" alt="LG" class="partner-logo">
-            
-            <img src="SAMSUNG.jpg" alt="Samsung" class="partner-logo">
-            
-            <img src="SINCLAIR.jpg" alt="Sinclair" class="partner-logo">
+        <div class="card">
+    <h3 id="service2-title">Tepelná čerpadla</h3>
+    <p id="service2-desc">Úsporné a ekologické vytápění s dlouhou životností. Specializujeme se na Panasonic, Airwell a Nibe.</p>
+
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 15px 0;">
+        <img src="Panasonic_logo.jpg" alt="Panasonic" style="height: 25px; width: auto; opacity: 0.8;">
+        <img src="Airwell_logo.jpg" alt="Airwell" style="height: 25px; width: auto; opacity: 0.8;">
+        <img src="nibe-logga-200.jpg" alt="Nibe" style="height: 25px; width: auto; opacity: 0.8;">
+    </div>
+
+         <a href="https://klimatika.cz/" target="_blank" id="service2-link" style="color: var(--primary); font-weight: bold; text-decoration: underline;">www.klimatika.cz</a>
+    </div>
+
+        <div class="card">
+            <h3 id="service3-title">Gastro a zmrzliny</h3>
+            <p id="service3-desc">Profesionální chlazení pro gastronomii. Jsme odborníci na techniku SENOL a zmrzlinové stroje.</p>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 15px 0;">
+        <img src="Senol_logo.jpg" alt="Senol" style="height: 25px; width: auto; opacity: 0.8;">
         </div>
-    </section>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 15px 0;">
+        <img src="Senol_chlad.jpg" alt="Senol" style="height: 100px; width: auto; opacity: 0.8;">
+       
+        <img src="Senol_chlad_1.jpg" alt="Senol" style="height: 100px; width: auto; opacity: 0.8;">
+        </div>
+                </div>
+                
+    </div>
+
+    <div class="dotace">
+        <h2 id="dotace-title">Potřebujete dotaci?</h2>
+        <p id="dotace-desc">Zajišťujeme kompletní administraci dotačních programů pro moderní zdroje vytápění.</p>
+    </div>
 </div>
 
-<section class="contact">
-    <p>Neváhejte mě kontaktovat na e-mailu:</p>
-    <a href="mailto:iceexplorercz@gmail.com">iceexplorercz@gmail.com</a>
-    <address class="address">
-        Studenec 203, 512 33 Studenec
-    </address>
+<section class="contact-section">
+    <h2 id="contact-title">Kontaktujte nás</h2>
+    <p>Ing. Jan Hák</p>
+    <a href="tel:+420604475465">604 475 465</a><br>
+    <a href="mailto:IceExplorerCZ@gmail.com" style="font-size: 1.2rem;">IceExplorerCZ@gmail.com</a>
+    <p>Studenec 203, 512 33 Studenec</p>
 </section>
 
 <footer>
-    &copy; 2026 Bc. Zdeněk Hanzlík. Všechna práva vyhrazena.
+    &copy; 2026 IceExplorer | Design by Bc. Zdeněk Hanzlík
 </footer>
+
+<script>
+    const translations = {
+        cs: {
+            "hero-title": "Chladírenská technika a moderní zdroje vytápění",
+            "hero-desc": "Odborné návrhy, precizní montáž a spolehlivý servis pro váš domov i podnikání.",
+            "service1-title": "Klimatizace",
+            "service1-desc": "Ideální klima po celý rok. Navrhneme řešení na míru pro byty, domy i komerční prostory.",
+            "service2-title": "Tepelná čerpadla",
+            "service2-desc": "Úsporné a ekologické vytápění s dlouhou životností. Specializujeme se na Panasonic, Airwell a Nibe.",
+            "service3-title": "Gastro a zmrzliny",
+            "service3-desc": "Profesionální chlazení pro gastronomii. Jsme odborníci na techniku SENOL a zmrzlinové stroje.",
+            "dotace-title": "Potřebujete dotaci?",
+            "dotace-desc": "Zajišťujeme kompletní administraci dotačních programů pro moderní zdroje vytápění.",
+            "contact-title": "Kontaktujte nás"
+        },
+        de: {
+            "hero-title": "Kältetechnik und moderne Heizquellen",
+            "hero-desc": "Professionelle Entwürfe, präzise Montage und zuverlässiger Service für Ihr Zuhause und Ihr Unternehmen.",
+            "service1-title": "Klimaanlage",
+            "service1-desc": "Ideales Klima das ganze Jahr über. Wir entwerfen maßgeschneiderte Lösungen für Wohnungen, Häuser und Gewerberäume.",
+            "service2-title": "Wärmepumpen",
+            "service2-desc": "Sparsame und ökologische Heizung mit langer Lebensdauer. Wir spezialisieren uns auf Panasonic, Airwell und Nibe.",
+            "service3-title": "Gastro und Eis",
+            "service3-desc": "Professionelle Kühlung für die Gastronomie. Wir sind Experten für SENOL-Technik und Eismaschinen.",
+            "dotace-title": "Benötigen Sie eine Förderung?",
+            "dotace-desc": "Wir bieten die komplette Verwaltung von Förderprogrammen für moderne Heizquellen an.",
+            "contact-title": "Kontaktieren Sie uns"
+        },
+        en: {
+            "hero-title": "Refrigeration Technology and Modern Heating Sources",
+            "hero-desc": "Professional designs, precise installation, and reliable service for your home and business.",
+            "service1-title": "Air Conditioning",
+            "service1-desc": "Perfect climate all year round. We design custom solutions for apartments, houses, and commercial spaces.",
+            "service2-title": "Heat Pumps",
+            "service2-desc": "Efficient and eco-friendly heating with long lifespan. We specialize in Panasonic, Airwell, and Nibe.",
+            "service3-title": "Gastro and Ice Cream",
+            "service3-desc": "Professional cooling for gastronomy. We are experts in SENOL technology and ice cream machines.",
+            "dotace-title": "Need a Subsidy?",
+            "dotace-desc": "We provide complete administration of subsidy programs for modern heating sources.",
+            "contact-title": "Contact Us"
+        }
+    };
+
+    function changeLang(lang) {
+        // Změna textů
+        for (let id in translations[lang]) {
+            document.getElementById(id).innerText = translations[lang][id];
+        }
+
+        // Aktivní tlačítko
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        // Změna jazyka v HTML tagu
+        document.documentElement.lang = lang;
+    }
+</script>
 
 </body>
 </html>
