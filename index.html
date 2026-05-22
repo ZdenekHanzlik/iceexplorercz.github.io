@@ -9,117 +9,568 @@
             --primary: #45a28e; 
             --dark: #1a1a1a;
             --accent: #002d5e;
+            --light-bg: #f9f9f9;
         }
 
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: var(--dark); line-height: 1.6; }
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            margin: 0; 
+            color: var(--dark); 
+            line-height: 1.6; 
+        }
         
         /* Jazyková lišta */
-        .top-bar { background: var(--dark); color: white; padding: 10px 0; text-align: center; }
+        .top-bar { 
+            background: var(--dark); 
+            color: white; 
+            padding: 12px 0; 
+            text-align: center; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
         .lang-btn { 
             cursor: pointer; 
             margin: 0 10px; 
-            opacity: 0.7; 
-            transition: 0.3s; 
+            opacity: 0.6; 
+            transition: 0.3s ease; 
             background: none; 
             border: none; 
             color: white; 
             font-weight: bold;
             font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 4px;
         }
-        .lang-btn:hover, .lang-btn.active { opacity: 1; color: var(--primary); }
+        .lang-btn:hover, .lang-btn.active { 
+            opacity: 1; 
+            color: white; 
+            background: var(--primary);
+        }
 
-        header { padding: 20px; text-align: center; }
-        .logo { max-width: 400px; width: 90%; }
+        header { padding: 30px 20px; text-align: center; }
+        .logo { max-width: 400px; width: 90%; height: auto; }
 
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1599933310631-ec6e093554e2?q=80&w=1200') center/cover;
-            color: white; padding: 40px 20px; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1599933310631-ec6e093554e2?q=80&w=1200') center/cover;
+            color: white; 
+            padding: 60px 20px; 
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 5px; margin-top: 10px; }
+        .hero h2 { font-size: 1.6rem; font-weight: 400; opacity: 0.9; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 25px auto; }
+
+        /* Tlačítko zavolat v Hero sekci */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(69, 162, 142, 0.4);
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            background-color: #378574;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(69, 162, 142, 0.6);
+            color: white;
+        }
+        .cta-btn:active {
+            transform: translateY(0);
         }
 
         .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
 
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .section-title {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 40px;
+            border-bottom: 4px solid var(--primary);
+            margin: 0 auto;
+        }
+
+        .services { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
         .card { 
-            background: #f9f9f9; border-radius: 15px; padding: 30px; 
-            text-align: center; border-bottom: 5px solid var(--primary);
+            background: var(--light-bg); 
+            border-radius: 15px; 
+            padding: 30px; 
+            text-align: center; 
+            border-bottom: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        .card h3 { color: var(--primary); }
+        .card h3 { color: var(--primary); font-size: 1.5rem; margin-top: 0; }
+        .card-content { flex-grow: 1; }
 
-        .dotace { 
-            background: #e8f5e9; border: 2px dashed #4caf50; border-radius: 15px; 
-            padding: 30px; margin: 40px 0; text-align: center; 
+        .brand-logos {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 15px; 
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .brand-logos img { height: 25px; width: auto; opacity: 0.85; object-fit: contain; }
+        .product-images img { height: 100px; width: auto; border-radius: 8px; object-fit: cover; }
+
+        /* SEKCE reference / loga partnerů */
+        .partners-section {
+            background-color: var(--light-bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        .partners-grid img {
+            height: 200px;
+            width: auto;
+            filter: none;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        .partners-grid img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .partners-text {
+            max-width: 700px;
+            margin: 25px auto 0 auto;
+            font-size: 1.1rem;
+            color: #555;
         }
 
-        .contact-section { background: var(--accent); color: white; padding: 40px 20px; text-align: center; }
-        .contact-section a { color: var(--primary); text-decoration: none; font-size: 1.8rem; font-weight: bold; }
+        /* Sekce Realizace / Reference */
+        .gallery-section {
+            background-color: #fff;
+            padding: 20px 0;
+        }
+        .reference-item {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .reference-text {
+            margin-bottom: 20px;
+        }
+        .reference-text h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .reference-meta {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        /* Flexbox uspořádání pro zarovnání obrázků vedle sebe */
+        .reference-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start; /* Zarovnání odleva doprava */
+        }
+        .reference-grid img {
+            width: 180px;  /* Pevná šířka náhledu */
+            height: 180px; /* Pevná výška náhledu */
+            object-fit: contain; 
+            background-color: #eaeaea; 
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer; 
+        }
+        .reference-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
 
-        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #888; }
+        /* MODÁLNÍ OKNO PRO ZOBRAZENÍ PLNÉ VELIKOSTI (LIGHTBOX) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 85%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .lightbox.show .lightbox-img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover {
+            color: var(--primary);
+        }
+
+        /* Navigační šipky v lightboxu */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 10px 15px;
+            cursor: pointer;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+            border-radius: 5px;
+            transition: background-color 0.2s, color 0.2s;
+            z-index: 2100;
+        }
+        .lightbox-nav:hover {
+            background-color: rgba(69, 162, 142, 0.8);
+            color: white;
+        }
+        .lightbox-prev {
+            left: -80px;
+        }
+        .lightbox-next {
+            right: -80px;
+        }
+
+        /* Mobilní optimalizace pro šipky */
+        @media (max-width: 768px) {
+            .lightbox-prev { left: 10px; background-color: rgba(0,0,0,0.5); }
+            .lightbox-next { right: 10px; background-color: rgba(0,0,0,0.5); }
+            .lightbox-close { top: -45px; right: 10px; }
+            .reference-grid { justify-content: center; } /* Na mobilu vycentrovat pro lepší vzhled */
+            .partners-grid { gap: 20px; }
+            .partners-grid img { height: 35px; }
+        }
+
+        .contact-section { background: var(--accent); color: white; padding: 50px 20px; text-align: center; }
+        .contact-section h2 { margin-bottom: 20px; }
+        .contact-link { 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-size: 1.8rem; 
+            font-weight: bold; 
+            transition: 0.3s;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .contact-link:hover { color: #5bc2ad; }
+        .contact-email { font-size: 1.3rem !important; }
+
+        footer { text-align: center; padding: 30px 20px; font-size: 0.85rem; color: #888; background: #f1f1f1; }
     </style>
 </head>
 <body>
 
 <div class="top-bar">
-    <button class="lang-btn active" onclick="changeLang('cs')">Česky</button>
-    <button class="lang-btn" onclick="changeLang('de')">Wirsprechen Deutsch</button>
-    <button class="lang-btn" onclick="changeLang('en')">We speak English</button>
+    <button class="lang-btn active" onclick="changeLang('cs', this)">Česky</button>
+    <button class="lang-btn" onclick="changeLang('de', this)">Wir sprechen Deutsch</button>
+    <button class="lang-btn" onclick="changeLang('en', this)">We speak English</button>
 </div>
 
-<header>
-    <img src="Logo.png" alt="IceExplorer" class="logo">
-</header>
-
 <section class="hero">
-    <h1 id="hero-title">Chladírenská technika a moderní zdroje vytápění</h1>
-    <p id="hero-desc">Odborné návrhy, precizní montáž a spolehlivý servis pro váš domov i podnikání.</p>
+    <h1 id="hero-name">Ing. Jan Hák / ICE Explorer CZ</h1>
+    <h2 id="hero-title">Váš technik pro chlazení, klimatizace a tepelná čerpadla.</h2>
+    <p id="hero-desc">Nejčastěji mě potkáte v „trojúhelníku“ Praha – Liberec – Hradec Králové, ale za zajímavou zakázkou přijedu i dál.</p>
+    <a href="tel:+420604475465" id="hero-call-btn" class="cta-btn">📞 Zavolat hned</a>
 </section>
 
 <div class="container">
+    <h2 class="section-title" id="sect-services-title">Naše služby</h2>
     <div class="services">
+
+         <!-- Gastro a zmrzliny -->
         <div class="card">
-            <h3 id="service1-title">Klimatizace</h3>
-            <p id="service1-desc">Ideální klima po celý rok. Navrhneme řešení na míru pro byty, domy i komerční prostory.</p>
-        </div>
-
-        <div class="card">
-    <h3 id="service2-title">Tepelná čerpadla</h3>
-    <p id="service2-desc">Úsporné a ekologické vytápění s dlouhou životností. Specializujeme se na Panasonic, Airwell a Nibe.</p>
-
-    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 15px 0;">
-        <img src="Panasonic_logo.jpg" alt="Panasonic" style="height: 25px; width: auto; opacity: 0.8;">
-        <img src="Airwell_logo.jpg" alt="Airwell" style="height: 25px; width: auto; opacity: 0.8;">
-        <img src="nibe-logga-200.jpg" alt="Nibe" style="height: 25px; width: auto; opacity: 0.8;">
-    </div>
-
-         <a href="https://klimatika.cz/" target="_blank" id="service2-link" style="color: var(--primary); font-weight: bold; text-decoration: underline;">www.klimatika.cz</a>
-    </div>
-
-        <div class="card">
-            <h3 id="service3-title">Gastro a zmrzliny</h3>
-            <p id="service3-desc">Profesionální chlazení pro gastronomii. Jsme odborníci na techniku SENOL a zmrzlinové stroje.</p>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 15px 0;">
-        <img src="Senol_logo.jpg" alt="Senol" style="height: 25px; width: auto; opacity: 0.8;">
-        </div>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 15px 0;">
-        <img src="Senol_chlad.jpg" alt="Senol" style="height: 100px; width: auto; opacity: 0.8;">
-       
-        <img src="Senol_chlad_1.jpg" alt="Senol" style="height: 100px; width: auto; opacity: 0.8;">
-        </div>
-                </div>
+            <div class="card-content">
+                <h3 id="service3-title">Gastro a zmrzliny</h3>
+                <p id="service3-desc">Profesionální chlazení pro gastronomii. Jsme odborníci na techniku SENOL a zmrzlinové stroje.</p>
                 
-    </div>
+                <div class="brand-logos">
+                    <img src="Senol_logo.jpg" alt="Senol">
+                </div>
+                <div class="brand-logos product-images">
+                    <img src="Senol_chlad.jpg" alt="Senol chlazení 1">
+                    <img src="Senol_chlad_1.jpg" alt="Senol chlazení 2">
+                </div>
+            </div>
+        </div>
 
-    <div class="dotace">
-        <h2 id="dotace-title">Potřebujete dotaci?</h2>
-        <p id="dotace-desc">Zajišťujeme kompletní administraci dotačních programů pro moderní zdroje vytápění.</p>
+        <!-- Klimatizace -->
+        <div class="card">
+            <div class="card-content">
+                <h3 id="service1-title">Klimatizace</h3>
+                <p id="service1-desc">Ideální klima po celý rok. Navrhneme řešení na míru pro byty, domy i komerční prostory.</p>
+            </div>
+        </div>
+
+        <!-- Tepelná čerpadla -->
+        <div class="card">
+            <div class="card-content">
+                <h3 id="service2-title">Tepelná čerpadla</h3>
+                <p id="service2-desc">Úsporné a ekologické vytápění s dlouhou životností. Specializujeme se na Panasonic, Airwell a Nibe.</p>
+                
+                <div class="brand-logos">
+                    <img src="Panasonic_logo.jpg" alt="Panasonic">
+                    <img src="Airwell_logo.jpg" alt="Airwell">
+                    <img src="nibe-logga-200.jpg" alt="Nibe">
+                </div>
+            </div>
+            <a href="https://klimatika.cz/" target="_blank" id="service2-link" style="color: var(--primary); font-weight: bold; text-decoration: underline; margin-top: 15px;">www.klimatika.cz</a>
+        </div>
     </div>
 </div>
 
+<!-- NOVÁ SEKCE: REFERENCE / NAŠI KLIENTI -->
+<section class="partners-section">
+    <div class="container" style="padding: 10px 20px;">
+        <h2 class="section-title" id="sect-partners-title" style="margin-bottom: 20px;">Naše služby využívají</h2>
+        
+        <!-- Místo pro loga velkých řetězců / partnerů (změň si názvy souborů podle potřeby) -->
+        <div class="partners-grid">
+           <img src="Reference1.jpg" alt="Partner 4" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Prostor pro vypsání lokálních nebo menších provozoven -->
+        <div class="partners-text" id="partners-text-desc">
+            Pravidelně se staráme o servis chlazení a klimatizací v řadě lokálních cukráren, výrobníků zmrzliny, hotelů a restaurací v Krkonoších, Pojizeří a Praze. Je nám ctí spolupracovat s firmami, které sázejí na špičkovou kvalitu a rychlý servis.
+        </div>
+    </div>
+</section>
+
+<!-- SEKCE: UKÁZKY REALIZACÍ -->
+<section class="gallery-section">
+    <div class="container">
+        <h2 class="section-title" id="sect-portfolio-title">Naše realizace</h2>
+        
+        <!-- Reference 1 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref1-title">Oprava úniku chladiva a výměna expanzního ventilu</h3>
+                <div class="reference-meta">📍 <span id="ref1-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace1_1.jpeg" alt="Realizace 1" class="gallery-img">
+                <img src="Realizace1_2.jpeg" alt="Realizace 1" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 2 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref2-title">Stavební přípravy pro klimatizaci, vše bude pěkně schované. Hlavně aby si investor vzpomněl včas. Lišty na omítku do novostavby nepatří.</h3>
+                <div class="reference-meta">📍 <span id="ref2-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace2_1.jpeg" alt="Realizace 2" class="gallery-img">
+                <img src="Realizace2_2.jpeg" alt="Realizace 2" class="gallery-img">
+            </div>
+        </div>
+
+         <!-- Reference 3 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref3-title">Čištění kondenzátoru pro výrobnu zmrzliny… s tou dekou to nechladí efektivně $$$</h3>
+                <div class="reference-meta">📍 <span id="ref3-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace3_1.jpeg" alt="Realizace 3" class="gallery-img">
+                <img src="Realizace3_2.jpeg" alt="Realizace 3" class="gallery-img">
+                <img src="Realizace3_3.jpeg" alt="Realizace 3" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 4 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref4-title">Jedna pěkná Airwellka</h3>
+                <div class="reference-meta">📍 <span id="ref4-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace4_1.jpeg" alt="Realizace 4" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 5 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref5-title">Panasonic TZ klimatizace v bytovém domě v Praze</h3>
+                <div class="reference-meta">📍 <span id="ref5-loc">Praha</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace5_1.jpeg" alt="Realizace 5" class="gallery-img">
+                <img src="Realizace5_2.jpeg" alt="Realizace 5" class="gallery-img">
+            </div>
+        </div>
+
+         <!-- Reference 6 -->
+         <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref6-title">Oprava tepelného čerpadla, výparník netěsný… to byla zima 🥶</h3>
+                <div class="reference-meta">📍 <span id="ref6-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace6_1.jpeg" alt="Realizace 6" class="gallery-img">
+                <img src="Realizace6_2.jpeg" alt="Realizace 6" class="gallery-img">
+                <img src="Realizace6_3.jpeg" alt="Realizace 6" class="gallery-img">
+                <img src="Realizace6_4.jpeg" alt="Realizace 6" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 7 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref7-title">Tepelné čerpadlo neodtává, oprava a seřízení systému … problém vyřešen</h3>
+                <div class="reference-meta">📍 <span id="ref7-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace7_1.jpeg" alt="Realizace 7" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 8 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref8-title">Servisní vybavení Testo, Bosch, moderní detekční metody</h3>
+                <div class="reference-meta">📍 <span id="ref8-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace8_1.jpeg" alt="Realizace 8" class="gallery-img">
+            </div>
+        </div>
+
+         <!-- Reference 9 -->
+         <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref9-title">Klimatizace do výrobní buňky</h3>
+                <div class="reference-meta">📍 <span id="ref9-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace9_1.jpeg" alt="Realizace 9" class="gallery-img">
+                <img src="Realizace9_2.jpeg" alt="Realizace 9" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 10 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref10-title">5kW jednotka pro pořádnou zimu - vitrína zmrzliny Praha</h3>
+                <div class="reference-meta">📍 <span id="ref10-loc">Praha</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace10_1.jpeg" alt="Realizace 10" class="gallery-img">
+                <img src="Realizace10_2.jpeg" alt="Realizace 10" class="gallery-img">
+                <img src="Realizace10_3.jpeg" alt="Realizace 10" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 11 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref11-title">Pájení měděného vedení</h3>
+                <div class="reference-meta">📍 <span id="ref11-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace11_1.jpeg" alt="Realizace 11" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Reference 12 -->
+        <div class="reference-item">
+            <div class="reference-text">
+                <h3 id="ref12-title">Nechladí? Oprava ventilátoru kondenzátoru a jinde zase výměna regulátoru…</h3>
+                <div class="reference-meta">📍 <span id="ref12-loc">xxx</span></div>
+            </div>
+            <div class="reference-grid">
+                <img src="Realizace12_1.jpeg" alt="Realizace 12" class="gallery-img">
+                <img src="Realizace12_2.jpeg" alt="Realizace 12" class="gallery-img">
+                <img src="Realizace12_3.jpeg" alt="Realizace 12" class="gallery-img">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODÁLNÍ OKNO (LIGHTBOX) HTML SE ŠIPKAMI -->
+<div id="customLightbox" class="lightbox" onclick="handleLightboxClick(event)">
+    <div class="lightbox-content">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">&#10094;</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Zvětšený náhled">
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1, event)">&#10095;</span>
+    </div>
+</div>
+
+<!-- Kontakt -->
 <section class="contact-section">
     <h2 id="contact-title">Kontaktujte nás</h2>
-    <p>Ing. Jan Hák</p>
-    <a href="tel:+420604475465">604 475 465</a><br>
-    <a href="mailto:IceExplorerCZ@gmail.com" style="font-size: 1.2rem;">IceExplorerCZ@gmail.com</a>
-    <p>Studenec 203, 512 33 Studenec</p>
+    <p style="font-size: 1.2rem; margin-bottom: 5px;">Ing. Jan Hák</p>
+    <a href="tel:+420604475465" class="contact-link">604 475 465</a><br>
+    <a href="mailto:IceExplorerCZ@gmail.com" class="contact-link contact-email">IceExplorerCZ@gmail.com</a>
+    <p style="margin-top: 15px; opacity: 0.9;">Studenec 203, 512 33 Studenec</p>
 </section>
 
 <footer>
@@ -129,59 +580,207 @@
 <script>
     const translations = {
         cs: {
-            "hero-title": "Chladírenská technika a moderní zdroje vytápění",
-            "hero-desc": "Odborné návrhy, precizní montáž a spolehlivý servis pro váš domov i podnikání.",
+            "hero-name": "Ing. Jan Hák / ICE Explorer CZ",
+            "hero-title": "Váš technik pro chlazení, klimatizace a tepelná čerpadla.",
+            "hero-desc": "Nejčastěji mě potkáte v „trojúhelníku“ Praha – Liberec – Hradec Králové, ale za zajímavou zakázkou přijedu i dál.",
+            "hero-call-btn": "📞 Zavolat hned",
+            "sect-services-title": "Naše služby",
+            "sect-partners-title": "Naše služby využívají",
+            "partners-text-desc": "Pravidelně se staráme o servis chlazení a klimatizací v řadě lokálních cukráren, výrobníků zmrzliny, hotelů a restaurací v Krkonoších, Pojizeří a Praze. Je nám ctí spolupracovat s firmami, které sázejí na špičkovou kvalitu a rychlý servis.",
+            "sect-portfolio-title": "Naše realizace",
             "service1-title": "Klimatizace",
             "service1-desc": "Ideální klima po celý rok. Navrhneme řešení na míru pro byty, domy i komerční prostory.",
             "service2-title": "Tepelná čerpadla",
             "service2-desc": "Úsporné a ekologické vytápění s dlouhou životností. Specializujeme se na Panasonic, Airwell a Nibe.",
             "service3-title": "Gastro a zmrzliny",
             "service3-desc": "Profesionální chlazení pro gastronomii. Jsme odborníci na techniku SENOL a zmrzlinové stroje.",
-            "dotace-title": "Potřebujete dotaci?",
-            "dotace-desc": "Zajišťujeme kompletní administraci dotačních programů pro moderní zdroje vytápění.",
-            "contact-title": "Kontaktujte nás"
+            "contact-title": "Kontaktujte nás",
+            "ref1-title": "Oprava úniku chladiva a výměna expanzního ventilu",
+            "ref1-loc": "xxx",
+            "ref2-title": "Stavební přípravy pro klimatizaci, vše bude pěkně schované. Hlavně aby si investor vzpomněl včas. Lišty na omítku do novostavby nepatří.",
+            "ref2-loc": "xxx",
+            "ref3-title": "Čištění kondenzátoru pro výrobnu zmrzliny… s tou dekou to nechladí efektivně $$$",
+            "ref3-loc": "xxx",
+            "ref4-title": "Jedna pěkná Airwellka",
+            "ref4-loc": "xxx",
+            "ref5-title": "Panasonic TZ klimatizace v bytovém domě v Praze",
+            "ref5-loc": "Praha",
+            "ref6-title": "Oprava tepelného čerpadla, výparník netěsný… to byla zima 🥶",
+            "ref6-loc": "xxx",
+            "ref7-title": "Tepelné čerpadlo neodtává, oprava a seřízení systému … problém vyřešen",
+            "ref7-loc": "xxx",
+            "ref8-title": "Servisní vybavení Testo, Bosch, moderní detekční metody",
+            "ref8-loc": "xxx",
+            "ref9-title": "Klimatizace do výrobní buňky",
+            "ref9-loc": "xxx",
+            "ref10-title": "5kW jednotka pro pořádnou zimu - vitrína zmrzliny Praha",
+            "ref10-loc": "Praha",
+            "ref11-title": "Pájení měděného vedení",
+            "ref11-loc": "xxx",
+            "ref12-title": "Nechladí? Oprava ventilátoru kondenzátoru a jinde zase výměna regulátoru…",
+            "ref12-loc": "xxx"
         },
         de: {
-            "hero-title": "Kältetechnik und moderne Heizquellen",
-            "hero-desc": "Professionelle Entwürfe, präzise Montage und zuverlässiger Service für Ihr Zuhause und Ihr Unternehmen.",
-            "service1-title": "Klimaanlage",
+            "hero-name": "Ing. Jan Hák / ICE Explorer CZ",
+            "hero-title": "Ihr Techniker für Kältetechnik, Klimaanlagen und Wärmepumpen.",
+            "hero-desc": "Am häufigsten treffen Sie mich im „Dreieck“ Prag – Liberec – Hradec Králové, für interessante Aufträge fahre ich aber auch weiter.",
+            "hero-call-btn": "📞 Jetzt anrufen",
+            "sect-services-title": "Unsere Dienstleistungen",
+            "sect-partners-title": "Unsere Dienstleistungen werden genutzt von",
+            "partners-text-desc": "Wir kümmern uns regelmäßig um den Service von Kälte- und Klimaanlagen in einer Reihe von lokalen Eisdielen, Eisherstellern, Hotels und Restaurants im Riesengebirge, im Isergebirge und in Prag. Es ist uns eine Ehre, mit Unternehmen zusammenzuarbeiten, die auf Spitzenqualität und schnellen Service setzen.",
+            "sect-portfolio-title": "Unsere Realisierungen",
+            "service1-title": "Klimaanlagen",
             "service1-desc": "Ideales Klima das ganze Jahr über. Wir entwerfen maßgeschneiderte Lösungen für Wohnungen, Häuser und Gewerberäume.",
             "service2-title": "Wärmepumpen",
-            "service2-desc": "Sparsame und ökologische Heizung mit langer Lebensdauer. Wir spezialisieren uns auf Panasonic, Airwell und Nibe.",
+            "service2-desc": "Sparsame und ökologische Heizung mit langer Lebensdauer. Wir spezialisieren uns auf Panasonic, Airwell and Nibe.",
             "service3-title": "Gastro und Eis",
             "service3-desc": "Professionelle Kühlung für die Gastronomie. Wir sind Experten für SENOL-Technik und Eismaschinen.",
-            "dotace-title": "Benötigen Sie eine Förderung?",
-            "dotace-desc": "Wir bieten die komplette Verwaltung von Förderprogrammen für moderne Heizquellen an.",
-            "contact-title": "Kontaktieren Sie uns"
+            "contact-title": "Kontaktieren Sie uns",
+            "ref1-title": "Kältemittelleck-Reparatur und Austausch des Expansionsventils",
+            "ref1-loc": "xxx",
+            "ref2-title": "Bauvorbereitung für die Klimaanlage, alles wird sauber versteckt. Wichtig ist, dass der Investor rechtzeitig daran denkt. Aufputzleisten gehören nicht in einen Neubau.",
+            "ref2-loc": "xxx",
+            "ref3-title": "Kondensatorreinigung für eine Eisdiele… mit dieser Schmutzschicht kühlt es nicht effizient $$$",
+            "ref3-loc": "xxx",
+            "ref4-title": "Eine schöne Airwell-Anlage",
+            "ref4-loc": "xxx",
+            "ref5-title": "Panasonic TZ Klimaanlage in einem Mietshaus in Prag",
+            "ref5-loc": "Prag",
+            "ref6-title": "Wärmepumpen-Reparatur, Verdampfer undicht… das war ein kalter Winter 🥶",
+            "ref6-loc": "xxx",
+            "ref7-title": "Wärmepumpe taut nicht ab, Systemreparatur und Justierung … Problem gelöst",
+            "ref7-loc": "xxx",
+            "ref8-title": "Testo- und Bosch-Serviceausrüstung, moderne Erkennungsmethoden",
+            "ref8-loc": "xxx",
+            "ref9-title": "Klimaanlage für eine Produktionszelle",
+            "ref9-loc": "xxx",
+            "ref10-title": "5kW-Einheit für ordentliche Kälte - Eisvitrine Prag",
+            "ref10-loc": "Prag",
+            "ref11-title": "Löten von Kupferleitungen",
+            "ref11-loc": "xxx",
+            "ref12-title": "Kühlt nicht? Reparatur des Kondensatorlüfters und andernorts Austausch des Reglers…",
+            "ref12-loc": "xxx"
         },
         en: {
-            "hero-title": "Refrigeration Technology and Modern Heating Sources",
-            "hero-desc": "Professional designs, precise installation, and reliable service for your home and business.",
+            "hero-name": "Ing. Jan Hák / ICE Explorer CZ",
+            "hero-title": "Your technician for refrigeration, air conditioning, and heat pumps.",
+            "hero-desc": "You will most often meet me in the Prague – Liberec – Hradec Králové 'triangle', but I can travel further for interesting projects.",
+            "hero-call-btn": "📞 Call now",
+            "sect-services-title": "Our Services",
+            "sect-partners-title": "Our Services are Used by",
+            "partners-text-desc": "We regularly handle the maintenance and repair of refrigeration and air conditioning systems for a variety of local ice cream shops, ice cream manufacturers, hotels, and restaurants in the Giant Mountains, Jizera region, and Prague. We are honored to cooperate with businesses that rely on premium quality and prompt service.",
+            "sect-portfolio-title": "Our Projects",
             "service1-title": "Air Conditioning",
             "service1-desc": "Perfect climate all year round. We design custom solutions for apartments, houses, and commercial spaces.",
             "service2-title": "Heat Pumps",
             "service2-desc": "Efficient and eco-friendly heating with long lifespan. We specialize in Panasonic, Airwell, and Nibe.",
             "service3-title": "Gastro and Ice Cream",
             "service3-desc": "Professional cooling for gastronomy. We are experts in SENOL technology and ice cream machines.",
-            "dotace-title": "Need a Subsidy?",
-            "dotace-desc": "We provide complete administration of subsidy programs for modern heating sources.",
-            "contact-title": "Contact Us"
+            "contact-title": "Contact Us",
+            "ref1-title": "Refrigerant leak repair and expansion valve replacement",
+            "ref1-loc": "xxx",
+            "ref2-title": "Pre-installation prep for AC, everything will be neatly hidden. Hopefully, the investor remembers in time. Surface-mounted trunks do not belong in a new build.",
+            "ref2-loc": "xxx",
+            "ref3-title": "Condenser cleaning for an ice cream production site… it doesn't cool efficiently with that layer of dust $$$",
+            "ref3-loc": "xxx",
+            "ref4-title": "A nice Airwell unit",
+            "ref4-loc": "xxx",
+            "ref5-title": "Panasonic TZ air conditioning in a residential building in Prague",
+            "ref5-loc": "Prague",
+            "ref6-title": "Heat pump repair, leaky evaporator… that was a cold winter 🥶",
+            "ref6-loc": "xxx",
+            "ref7-title": "Heat pump not defrosting, system repair and adjustment … problem solved",
+            "ref7-loc": "xxx",
+            "ref8-title": "Testo and Bosch service equipment, modern detection methods",
+            "ref8-loc": "xxx",
+            "ref9-title": "Air conditioning for a production cabin",
+            "ref9-loc": "xxx",
+            "ref10-title": "5kW unit for serious freezing - ice cream display case Prague",
+            "ref10-loc": "Prague",
+            "ref11-title": "Copper pipe brazing",
+            "ref11-loc": "xxx",
+            "ref12-title": "Not cooling? Condenser fan repair and controller replacement elsewhere…",
+            "ref12-loc": "xxx"
         }
     };
 
-    function changeLang(lang) {
-        // Změna textů
+    function changeLang(lang, btnElement) {
         for (let id in translations[lang]) {
-            document.getElementById(id).innerText = translations[lang][id];
+            const element = document.getElementById(id);
+            if (element) {
+                element.innerText = translations[lang][id];
+            }
         }
 
-        // Aktivní tlačítko
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        if (btnElement) {
+            btnElement.classList.add('active');
+        }
         
-        // Změna jazyka v HTML tagu
         document.documentElement.lang = lang;
     }
+
+    /* SKRIPT PRO GALERII (LIGHTBOX S LISTOVÁNÍM) */
+    let currentImgIndex = 0;
+    let allGalleryImages = [];
+
+    document.addEventListener("DOMContentLoaded", function() {
+        allGalleryImages = Array.from(document.querySelectorAll('.gallery-img'));
+        
+        allGalleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                openLightbox(index);
+            });
+        });
+    });
+
+    function openLightbox(index) {
+        currentImgIndex = index;
+        const lightbox = document.getElementById('customLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        
+        lightboxImg.src = allGalleryImages[currentImgIndex].src;
+        lightbox.classList.add('show');
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('customLightbox');
+        lightbox.classList.remove('show');
+    }
+
+    function changeImage(direction, event) {
+        if (event) event.stopPropagation(); 
+        
+        currentImgIndex += direction;
+        
+        if (currentImgIndex >= allGalleryImages.length) {
+            currentImgIndex = 0;
+        } else if (currentImgIndex < 0) {
+            currentImgIndex = allGalleryImages.length - 1;
+        }
+        
+        const lightboxImg = document.getElementById('lightboxImg');
+        lightboxImg.src = allGalleryImages[currentImgIndex].src;
+    }
+
+    function handleLightboxClick(event) {
+        if (event.target.id === 'customLightbox' || event.target.classList.contains('lightbox-content')) {
+            closeLightbox();
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('customLightbox');
+        if (!lightbox.classList.contains('show')) return; 
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (e.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    });
 </script>
 
 </body>
